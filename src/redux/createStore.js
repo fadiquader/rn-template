@@ -4,16 +4,13 @@ import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-hel
 //
 import Rehydration from '../services/Rehydration';
 import ReduxPersist from '../config/reduxPersist';
-import { navigationMiddleware } from '../navigation/ReduxNavigation'
 
 // creates the store
-export default (rootReducer, rootSaga, mid) => {
+export default (rootReducer, rootSaga,) => {
   /* ------------- Redux Configuration ------------- */
 
   const middleware = [];
   const enhancers = [];
-  // if(mid)
-    middleware.push(navigationMiddleware);
 
   /* ------------- Saga Middleware ------------- */
 

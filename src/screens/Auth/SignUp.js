@@ -12,4 +12,4 @@ class SignUpScreen extends React.Component {
   }
 }
 
-export const SignUp = SignUpScreen;
+export default SignUpScreen;

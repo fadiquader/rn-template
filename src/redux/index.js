@@ -7,7 +7,6 @@ import configureStore from './createStore'
 
 export const reducers = combineReducers({
   startup: require('./startup/reducer').reducer,
-  nav: require('./nav').reducer,
 });
 
 export default () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, AsyncStorage } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,20 +16,35 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignInScreen = ({ navigation }) => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      Screen A
-    </Text>
-    <Text style={styles.instructions}>
-      This is great
-    </Text>
-    <Button
-      onPress={() => navigation.dispatch({ type: 'Login' })}
-      title="Log in"
-    />
-  </View>
-);
+class SignInScreen extends React.Component {
+
+  _signInAsync = async () => {
+    try {
+      await AsyncStorage.setItem('userToken', 'fadi');
+      this.props.navigation.navigate('HomeScreen');
+    } catch (err) {
+      console.log('err ', err)
+    }
+  };
+
+  render() {
+    const { navigation } = this.props;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Screen A
+        </Text>
+        <Text style={styles.instructions}>
+          This is great
+        </Text>
+        <Button
+          onPress={this._signInAsync}
+          title="Log in"
+        />
+      </View>
+    );
+  }
+}
 
 SignInScreen.propTypes = {
   navigation: PropTypes.object.isRequired,

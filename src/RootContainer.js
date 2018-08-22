@@ -13,11 +13,7 @@ import NavigationService from './services/NavigationService';
 import styles from './RootContainerStyles'
 
 class RootContainer extends Component {
-  componentDidMount () {
-    if (!ReduxPersist.active) {
-      this.props.startup()
-    }
-  }
+
   render () {
     return (
       <View style={styles.applicationView}>
@@ -32,9 +28,4 @@ class RootContainer extends Component {
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-const mapDispatch = (dispatch) => bindActionCreators({
-    startup: startupActions.startup
-}, dispatch);
-
-export default connect(null, mapDispatch)(RootContainer)
+export default connect()(RootContainer)

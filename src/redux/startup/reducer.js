@@ -8,6 +8,10 @@ const initialState = {
 };
 
 export const reducer = createReducer({
+  [actions.launch]: (state, payload) => ({
+    ...state,
+    launched: true
+  }),
   [actions.login]: (state, payload) => ({
     ...state,
     isLoggedIn: true
